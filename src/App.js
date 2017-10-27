@@ -7,8 +7,8 @@ import { Admin, Resource, Delete } from 'admin-on-rest';
 import { RestClient, AuthClient } from 'aor-firebase-client';
 import firebase from 'firebase';
 
-import { PostList, PostEdit, PostCreate } from './posts';
-import { UserList, UserEdit, UserCreate } from './users';
+import { PostList, PostEdit, PostCreate, PostShow } from './posts';
+import { UserList, UserEdit, UserCreate, UserShow } from './users';
 
 
 var config = {
@@ -25,8 +25,8 @@ firebase.initializeApp(config);
 
 const App = () => (
     <Admin restClient={RestClient(trackedResources, config)}  authClient={AuthClient}>
-        <Resource name="posts" list={PostList} edit={PostEdit} create={PostCreate} remove={Delete}/>
-        <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} remove={Delete}/>
+        <Resource name="posts" list={PostList} edit={PostEdit} create={PostCreate} show={PostShow} remove={Delete}/>
+        <Resource name="users" list={UserList} edit={UserEdit} create={UserCreate} show={UserShow} remove={Delete}/>
     </Admin>
 );
 

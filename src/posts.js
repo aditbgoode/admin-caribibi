@@ -1,10 +1,18 @@
 // in src/posts.js
 import React from 'react';
-import { List, Edit, Create, Datagrid, ReferenceField, TextField, EditButton, DisabledInput, LongTextInput, ReferenceInput, SelectInput, SimpleForm, TextInput } from 'admin-on-rest';
+import { List, Edit, Show, Create, Filter, ShowButton, SimpleShowLayout, Datagrid, ReferenceField, TextField, EditButton, DisabledInput, LongTextInput, ReferenceInput, SelectInput, SimpleForm, TextInput } from 'admin-on-rest';
 
+
+
+const PostFilter = (props) => (
+    <Filter {...props}>
+        <TextInput label="Search" source="q" alwaysOn />
+        <TextInput label="Title" source="title" defaultValue="" />
+    </Filter>
+);
 
 export const PostList = (props) => (
-    <List {...props}>
+    <List {...props} filters={<PostFilter />} perPage={15}>
         <Datagrid>
             <TextField source="id" />
             <ReferenceField label="User" source="userId" reference="users">
@@ -12,6 +20,8 @@ export const PostList = (props) => (
             </ReferenceField>
             <TextField source="title" />
             <TextField source="body" />
+            <ShowButton />
+            <EditButton />
         </Datagrid>
     </List>
 );
@@ -43,4 +53,17 @@ export const PostCreate = (props) => (
             <LongTextInput source="body" />
         </SimpleForm>
     </Create>
+);
+
+export const PostShow = (props) => (
+    <Show {...props}>
+        <SimpleShowLayout>
+            <TextField source="id" />
+            <ReferenceField label="User" source="userId" reference="users">
+                <TextField source="fullname" />
+            </ReferenceField>
+            <TextField source="title" />
+            <TextField source="body" />
+        </SimpleShowLayout>
+    </Show>
 );
