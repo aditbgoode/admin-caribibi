@@ -1,0 +1,14 @@
+{
+	"posts":[
+		{ "id": 0, "userId": 0, "title": "Hello, world!", "body": "Lorem ipsum" },
+		{ "id": 1, "userId": 1, "title": "FooBar", "body": "Lorem ipsum" }
+	],
+	"comments":[
+		{ "id": 0, "post_id": 0, "author": "John Doe", "body": "Sensational!" },
+		{ "id": 1, "post_id": 0, "author": "Jane Doe", "body": "I agree" }
+	],
+	"users":[
+		{ "id": 0, "username": "rio", "fullname": "Riooo" },
+		{ "id": 1, "username": "rio2", "fullname": "Riooo2" }
+	]
+}
